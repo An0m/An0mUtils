@@ -18,12 +18,12 @@ public class BungeeConfig {
 
     /**
      * A basic bungee config util
-     * @param instance The instance of the plugin
+     * @param plugin The instance of the plugin
      * @param folderName The name of the plugin folder
      * @param fileName The name filename of the resource with extension (ex: file.yml)
      */
-    public BungeeConfig(Plugin instance, String folderName, String fileName) {
-        this.instance = instance;
+    public BungeeConfig(Plugin plugin, String folderName, String fileName) {
+        this.instance = plugin;
         this.fileName = fileName;
 
         String dataFolder = "plugins/" + folderName + "/";
