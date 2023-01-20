@@ -6,13 +6,15 @@
 
     <groupId>me.an0m</groupId>
     <artifactId>mcutils</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <description>A maven dependency that contains some of the functions that i use in most of my plugins</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <host>http://localhost</host>
+        <uploadKey>INVALID_KEY</uploadKey>
     </properties>
 
     <repositories>
@@ -30,6 +32,25 @@
         </repository>
     </repositories>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -45,11 +66,23 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>${host}/maven/${uploadKey}</url>
+            <name>test</name>
+        </repository>
+    </distributionManagement>
+
     <!--
+        <repository>
+            <id>an0m-repo</id>
+            <url>https://an0n1mat10n.com/maven/</url>
+        </repository>
         <dependency>
             <groupId>me.an0m</groupId>
             <artifactId>mcutils</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>LATEST</version>
         </dependency>
     -->
 </project>
