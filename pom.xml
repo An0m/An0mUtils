@@ -4,16 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.an0m</groupId>
+    <groupId>dev.an0m</groupId>
     <artifactId>mcutils</artifactId>
-    <version>1.0</version>
-    <description>A maven dependency that contains some of the functions that i use in most of my plugins</description>
+    <version>1.1</version>
+    <description>A maven dependency that contains some of the functions that I use in most of my plugins</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <host>http://localhost</host>
         <uploadKey>INVALID_KEY</uploadKey>
     </properties>
 
@@ -69,18 +68,17 @@
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <url>${host}/maven/${uploadKey}</url>
-            <name>test</name>
+            <url>https://an0m.dev/maven/admin.${uploadKey}</url>
         </repository>
     </distributionManagement>
 
     <!--
         <repository>
             <id>an0m-repo</id>
-            <url>https://an0n1mat10n.com/maven/</url>
+            <url>https://an0m.dev/maven/</url>
         </repository>
         <dependency>
-            <groupId>me.an0m</groupId>
+            <groupId>dev.an0m</groupId>
             <artifactId>mcutils</artifactId>
             <version>LATEST</version>
         </dependency>

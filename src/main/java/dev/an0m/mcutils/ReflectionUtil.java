@@ -1,4 +1,4 @@
-package me.an0m.mcutils;
+package dev.an0m.mcutils;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;

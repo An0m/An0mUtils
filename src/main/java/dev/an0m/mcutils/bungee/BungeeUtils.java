@@ -1,4 +1,4 @@
-package me.an0m.mcutils.bungee;
+package dev.an0m.mcutils.bungee;
 
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.plugin.Command;
@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.PluginManager;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import static me.an0m.mcutils.TextUtils.cc;
+import static dev.an0m.mcutils.TextUtils.cc;
 
 public class BungeeUtils {
     /**

@@ -1,4 +1,4 @@
-package me.an0m.mcutils.spigot;
+package dev.an0m.mcutils.spigot;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

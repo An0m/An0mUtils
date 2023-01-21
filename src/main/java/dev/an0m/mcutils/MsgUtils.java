@@ -1,6 +1,6 @@
-package me.an0m.mcutils;
+package dev.an0m.mcutils;
 
-import me.an0m.mcutils.bungee.BungeeUtils;
+import dev.an0m.mcutils.bungee.BungeeUtils;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -8,7 +8,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import org.bukkit.entity.Player;
 
-import static me.an0m.mcutils.TextUtils.cc;
+import static dev.an0m.mcutils.TextUtils.cc;
 
 public class MsgUtils {
 

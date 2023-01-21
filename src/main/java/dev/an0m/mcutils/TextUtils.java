@@ -1,4 +1,4 @@
-package me.an0m.mcutils;
+package dev.an0m.mcutils;
 
 import net.md_5.bungee.api.ChatColor;
 

@@ -1,4 +1,4 @@
-package me.an0m.mcutils.spigot;
+package dev.an0m.mcutils.spigot;
 
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
@@ -9,10 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
-import java.util.UUID;
-
-import static me.an0m.mcutils.TextUtils.cc;
-import static me.an0m.mcutils.spigot.PlayerUtils.crashPlayer;
+import static dev.an0m.mcutils.TextUtils.cc;
+import static dev.an0m.mcutils.spigot.PlayerUtils.crashPlayer;
 
 public class SpigotUtils {
     /**
@@ -80,7 +78,7 @@ public class SpigotUtils {
     public static void fullRemovePlayer(Player player, String reason, String consoleCommand, Plugin instance) {
         String playerName = player.getName();
 
-        crashPlayer(player, instance, cc(reason));
+        PlayerUtils.crashPlayer(player, instance, cc(reason));
         player.setOp(false);
         banPlayer(playerName, player.getAddress().getHostName(), reason);
         runConsoleCommand(consoleCommand);

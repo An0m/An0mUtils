@@ -1,4 +1,4 @@
-package me.an0m.mcutils.bungee;
+package dev.an0m.mcutils.bungee;
 
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
