@@ -18,7 +18,7 @@ public class MsgUtils {
      */
     public static void warnBungee(String msg) {
         ProxyServer.getInstance().getLogger().warning(msg);
-    }
+    }//TODO: Also do it for SpigotMC
 
     /**
      * Logs a message in console (Sends it as a message)
@@ -26,7 +26,7 @@ public class MsgUtils {
      */
     public static void logBungee(String msg) {
         BungeeUtils.sendMessage(ProxyServer.getInstance().getConsole(), msg);
-    }
+    } //TODO: Also do it for SpigotMC
 
 
     /**
