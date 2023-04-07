@@ -2,6 +2,10 @@ package dev.an0m.mcutils;
 
 import net.md_5.bungee.api.ChatColor;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -93,6 +97,30 @@ public class TextUtils {
     /** Compacts an array of strings. Like join, but slightly better */
     public static String compactStringArray(Collection<String> strings) {
         return compactStringArray(strings, 0);
+    }
+
+
+    /** Get the sha 256 of an array of bytes*/
+    public static byte[] getSha256Bytes(byte[] bytes) throws NoSuchAlgorithmException {
+        return MessageDigest.getInstance("SHA-256").digest(bytes);
+    }
+    /** Get the hex representation of an array of bytes*/
+    public static String getHex(byte[] bytes) {
+        return new BigInteger(1, bytes).toString(16);
+    }
+    /** Get the sha256 of an array of bytes (hex digested) */
+    public static String getSha256(byte[] bytes) throws NoSuchAlgorithmException {
+        StringBuilder hex = new StringBuilder(getHex(getSha256Bytes(bytes)));
+
+        // Pad with leading zeros
+        while (hex.length() < 64)
+            hex.insert(0, "0");
+
+        return hex.toString();
+    }
+    /** Get the sha256 of a string (hex digested) */
+    public static String getSha256(String input) throws NoSuchAlgorithmException {
+        return getSha256(input.getBytes(StandardCharsets.UTF_8));
     }
 
 
