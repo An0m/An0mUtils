@@ -119,8 +119,12 @@ public class TextUtils {
         return hex.toString();
     }
     /** Get the sha256 of a string (hex digested) */
-    public static String getSha256(String input) throws NoSuchAlgorithmException {
-        return getSha256(input.getBytes(StandardCharsets.UTF_8));
+    public static String getSha256(String input) {
+        try {
+            return getSha256(input.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
     }
 
 
