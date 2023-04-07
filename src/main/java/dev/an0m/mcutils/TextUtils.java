@@ -123,7 +123,7 @@ public class TextUtils {
         try {
             return getSha256(input.getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException e) {
-            return null;
+            return "";
         }
     }
 
