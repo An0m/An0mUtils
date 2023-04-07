@@ -70,6 +70,10 @@ public class TextUtils {
         return compactStringArray(strings, startFrom, " ");
     }
     /** Compacts an array of strings. Like join, but slightly better */
+    public static String compactStringArray(String[] strings, String space) {
+        return compactStringArray(strings, 0, space);
+    }
+    /** Compacts an array of strings. Like join, but slightly better */
     public static String compactStringArray(String[] strings) {
         return compactStringArray(strings, 0);
     }
@@ -81,6 +85,10 @@ public class TextUtils {
     /** Compacts an array of strings. Like join, but slightly better */
     public static String compactStringArray(Collection<String> strings, int startFrom) {
         return compactStringArray(strings, startFrom, " ");
+    }
+    /** Compacts an array of strings. Like join, but slightly better */
+    public static String compactStringArray(Collection<String> strings, String space) {
+        return compactStringArray(strings, 0, space);
     }
     /** Compacts an array of strings. Like join, but slightly better */
     public static String compactStringArray(Collection<String> strings) {
