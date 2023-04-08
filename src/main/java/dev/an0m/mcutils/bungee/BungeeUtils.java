@@ -1,5 +1,6 @@
 package dev.an0m.mcutils.bungee;
 
+import dev.an0m.mcutils.WebUtils;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.Connection;
@@ -70,6 +71,6 @@ public class BungeeUtils {
      * <a href="https://www.spigotmc.org/threads/how-to-get-player-ip-in-bungeecord.513255/">-janmm14</a>
      * */
     public static String getPlayerIP(Connection connection) {
-        return connection.getSocketAddress() + "";
+        return WebUtils.splitSocketAddress(connection.getSocketAddress())[0];
     }
 }
