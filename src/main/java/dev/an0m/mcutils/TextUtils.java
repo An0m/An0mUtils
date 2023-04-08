@@ -100,17 +100,13 @@ public class TextUtils {
     }
 
 
-    /** Get the sha 256 of an array of bytes*/
-    public static byte[] getSha256Bytes(byte[] bytes) throws NoSuchAlgorithmException {
-        return MessageDigest.getInstance("SHA-256").digest(bytes);
-    }
     /** Get the hex representation of an array of bytes*/
     public static String getHex(byte[] bytes) {
         return new BigInteger(1, bytes).toString(16);
     }
     /** Get the sha256 of an array of bytes (hex digested) */
     public static String getSha256(byte[] bytes) throws NoSuchAlgorithmException {
-        StringBuilder hex = new StringBuilder(getHex(getSha256Bytes(bytes)));
+        StringBuilder hex = new StringBuilder(getHex(MessageDigest.getInstance("SHA-256").digest(bytes)));
 
         // Pad with leading zeros
         while (hex.length() < 64)
@@ -125,6 +121,18 @@ public class TextUtils {
         } catch (NoSuchAlgorithmException e) {
             return "";
         }
+    }
+    /** Time consistent comparison alias */
+    public static boolean compareDigest(byte[] digesta, byte[] digestb) {
+        return MessageDigest.isEqual(digesta, digestb);
+    }
+    /** Time consistent comparison alias */
+    public static boolean compareDigest(String digesta, String digestb) {
+        return compareDigest(digesta.getBytes(StandardCharsets.UTF_8), digestb.getBytes(StandardCharsets.UTF_8));
+    }
+    /** Time consistently compares the sha256 of an input the reference hash */
+    public static boolean checkSha256(String input, String hash) {
+        return compareDigest(getSha256(input), hash);
     }
 
     /** Split to the last occurrence of a char*/
