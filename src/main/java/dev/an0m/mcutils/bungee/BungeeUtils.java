@@ -1,21 +1,26 @@
 package dev.an0m.mcutils.bungee;
 
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.Connection;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
-import org.bukkit.entity.Player;
-
-import java.net.InetSocketAddress;
-import java.net.Socket;
 
 import static dev.an0m.mcutils.TextUtils.cc;
 import static dev.an0m.mcutils.WebUtils.testSocketConnection;
 
 public class BungeeUtils {
+    /**
+     * Executes a command as the console
+     * @param command The command to execute. Can be null
+     */
+    public static void runConsoleCommand(String command) {
+        if (command != null)
+            ProxyServer.getInstance().getPluginManager().dispatchCommand(ProxyServer.getInstance().getConsole(), command);
+    }
+
     /**
      * Returns if a server is reachable using a socket
      * @param server The instance of the target server
