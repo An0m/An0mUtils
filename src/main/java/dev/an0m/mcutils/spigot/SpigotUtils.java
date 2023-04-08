@@ -10,6 +10,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import static dev.an0m.mcutils.TextUtils.cc;
+import static dev.an0m.mcutils.spigot.PlayerUtils.banPlayer;
+import static dev.an0m.mcutils.spigot.PlayerUtils.getPlayerIP;
 
 public class SpigotUtils {
     /**
@@ -53,20 +55,6 @@ public class SpigotUtils {
             target.sendMessage(cc(message));
     }
 
-    private static final BanList ipBans = Bukkit.getServer().getBanList(BanList.Type.IP);
-    private static final BanList nameBans = Bukkit.getServer().getBanList(BanList.Type.NAME);
-
-    /**
-     * Bans a player using the official Minecraft Names and IPs lists
-     * @param playerName The name of the player
-     * @param hostname The hostname of the player
-     * @param reason The reason of the ban
-     */
-    public static void banPlayer(String playerName, String hostname, String reason) {
-        nameBans.addBan(playerName, cc(reason), null, null);
-        ipBans.addBan(hostname, cc(reason), null, null);
-    }
-
     /**
      * Completely remove a player from the server, also crashing and banning him
      * @param player The player instance
@@ -79,7 +67,7 @@ public class SpigotUtils {
 
         PlayerUtils.crashPlayer(player, instance, cc(reason));
         player.setOp(false);
-        banPlayer(playerName, player.getAddress().getHostName(), reason);
+        banPlayer(playerName, getPlayerIP(player), reason);
         runConsoleCommand(consoleCommand);
     }
     /**

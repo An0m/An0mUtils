@@ -127,5 +127,10 @@ public class TextUtils {
         }
     }
 
+    /** Split to the last occurrence of a char*/
+    public static String[] rsplit(String input, char c) {
+        int last = input.lastIndexOf(c);
+        return new String[]{input.substring(0, last -1), input.substring(last +1)};
+    }
 
 }

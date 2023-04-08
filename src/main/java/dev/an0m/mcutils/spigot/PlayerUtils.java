@@ -1,15 +1,14 @@
 package dev.an0m.mcutils.spigot;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.Server;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static dev.an0m.mcutils.TextUtils.cc;
 
 public class PlayerUtils {
     /**
@@ -33,6 +32,20 @@ public class PlayerUtils {
     @Deprecated
     public static Player getPlayer(String nameOrUUID) {
         return getPlayerByNameOrUUID(nameOrUUID);
+    }
+
+    private static final BanList ipBans = Bukkit.getServer().getBanList(BanList.Type.IP);
+    private static final BanList nameBans = Bukkit.getServer().getBanList(BanList.Type.NAME);
+
+    /**
+     * Bans a player using the official Minecraft Names and IPs lists
+     * @param playerName The name of the player
+     * @param playerIP The hostname of the player
+     * @param reason The reason of the ban
+     */
+    public static void banPlayer(String playerName, String playerIP, String reason) {
+        nameBans.addBan(playerName, cc(reason), null, null);
+        ipBans.addBan(playerIP, cc(reason), null, null);
     }
 
 
@@ -119,5 +132,10 @@ public class PlayerUtils {
         for (Player p : Bukkit.getServer().getOnlinePlayers())
             if (!p.equals(player))
                 p.showPlayer(instance, player);
+    }
+
+    /** Returns a player's IP address (IPv4 or IPv6) */
+    public static String getPlayerIP(Player player) {
+        return player.getAddress().getAddress() + "";
     }
 }

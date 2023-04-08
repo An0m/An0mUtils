@@ -1,15 +1,19 @@
 package dev.an0m.mcutils.bungee;
 
 import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.api.connection.Connection;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
+import org.bukkit.entity.Player;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import static dev.an0m.mcutils.TextUtils.cc;
+import static dev.an0m.mcutils.WebUtils.testSocketConnection;
 
 public class BungeeUtils {
     /**
@@ -18,15 +22,7 @@ public class BungeeUtils {
      * @return If the server is online
      */
     public static boolean isServerOnline(ServerInfo server) {
-        try {
-            String[] add = server.getSocketAddress().toString().replace("/", "").split(":");
-            Socket s = new Socket();
-            s.connect(new InetSocketAddress(add[0], Integer.parseInt(add[1])), 20);
-            s.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return testSocketConnection(server.getSocketAddress());
     }
 
     /**
@@ -60,5 +56,15 @@ public class BungeeUtils {
     public static void sendMessage(net.md_5.bungee.api.CommandSender target, String message) {
         if (!message.isEmpty())
             target.sendMessage(cc(message));
+    }
+
+    /**
+     * Returns a player's IP address (IPv4 or IPv6)
+     * Not using getAddress because BungeeCord can now accept connections via Unix domain sockets.
+     * On unix systems like linux processes can communicate via domain sockets if configured
+     * <a href="https://www.spigotmc.org/threads/how-to-get-player-ip-in-bungeecord.513255/">-janmm14</a>
+     * */
+    public static String getPlayerIP(Connection connection) {
+        return connection.getSocketAddress() + "";
     }
 }

@@ -1,15 +1,13 @@
 package dev.an0m.mcutils;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import static dev.an0m.mcutils.TextUtils.compactStringArray;
+import static dev.an0m.mcutils.TextUtils.rsplit;
 
 public class WebUtils {
     public static final String exampleUserAgent =
@@ -109,5 +107,26 @@ public class WebUtils {
 
     public static String urlEncode(String value) throws UnsupportedEncodingException {
         return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+    }
+
+    /** Returns if a port is reachable using a socket */
+    public static boolean testSocketConnection(SocketAddress address, int timeoutMs) {
+        try {
+            Socket s = new Socket();
+            s.connect(address, timeoutMs);
+            s.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    /** Returns if a port is reachable using a socket */
+    public static boolean testSocketConnection(SocketAddress address) {
+        return testSocketConnection(address, 20);
+    }
+
+    /** Splits a socket address into IP and port */
+    public static String[] splitSocketAddress(SocketAddress address) {
+        return rsplit(address.toString().replaceFirst("/", ""), ':');
     }
 }
