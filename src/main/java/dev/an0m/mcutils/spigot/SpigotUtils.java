@@ -1,6 +1,5 @@
 package dev.an0m.mcutils.spigot;
 
-import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.CommandExecutor;
