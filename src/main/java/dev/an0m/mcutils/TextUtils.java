@@ -131,7 +131,7 @@ public class TextUtils {
         return compareDigest(digesta.getBytes(StandardCharsets.UTF_8), digestb.getBytes(StandardCharsets.UTF_8));
     }
     /** Time consistently compares the sha256 of an input the reference hash */
-    public static boolean checkSha256(String input, String hash) {
+    public static boolean compareSha256(String input, String hash) {
         return compareDigest(getSha256(input), hash);
     }
 
