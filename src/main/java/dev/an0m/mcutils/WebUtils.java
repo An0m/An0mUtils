@@ -5,6 +5,7 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static dev.an0m.mcutils.TextUtils.compactStringArray;
 import static dev.an0m.mcutils.TextUtils.rsplit;
@@ -15,15 +16,21 @@ public class WebUtils {
 
     /**
      * Basic URL reader, for when you just want the output of a request
+     * @return The response stream
+     * */
+    public static Stream<String> readStreamFromUrl(URL url, String userAgent) throws IOException {
+        URLConnection din = url.openConnection();
+        din.addRequestProperty("User-Agent", userAgent);
+
+        return new BufferedReader(new InputStreamReader(din.getInputStream())).lines();
+    }
+    /**
+     * Basic URL reader, for when you just want the output of a request
      * @return The response lines
      * */
     public static List<String> readLinesFromUrl(URL url, String userAgent) throws IOException {
         List<String> lines = new ArrayList<>();
-
-        URLConnection din = url.openConnection();
-        din.addRequestProperty("User-Agent", userAgent);
-
-        new BufferedReader(new InputStreamReader(din.getInputStream())).lines().forEachOrdered(lines::add);
+        readStreamFromUrl(url, userAgent).forEachOrdered(lines::add);
         return lines;
     }
     /**
