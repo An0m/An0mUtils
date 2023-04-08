@@ -1,11 +1,13 @@
 package dev.an0m.mcutils;
 
 import dev.an0m.mcutils.bungee.BungeeUtils;
+import dev.an0m.mcutils.spigot.SpigotUtils;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import static dev.an0m.mcutils.TextUtils.cc;
@@ -18,7 +20,15 @@ public class MsgUtils {
      */
     public static void warnBungee(String msg) {
         ProxyServer.getInstance().getLogger().warning(msg);
-    }//TODO: Also do it for SpigotMC
+    }
+    /**
+     * Shows a warning message in the console
+     * @param msg The message to display
+     */
+    public static void warnSpigot(String msg) {
+        Bukkit.getServer().getLogger().warning(msg);
+    }
+
 
     /**
      * Logs a message in console (Sends it as a message)
@@ -26,7 +36,14 @@ public class MsgUtils {
      */
     public static void logBungee(String msg) {
         BungeeUtils.sendMessage(ProxyServer.getInstance().getConsole(), msg);
-    } //TODO: Also do it for SpigotMC
+    }
+    /**
+     * Logs a message in console (Sends it as a message)
+     * @param msg The message to display
+     */
+    public static void logSpigot(String msg) {
+        SpigotUtils.sendMessage(Bukkit.getServer().getConsoleSender(), msg);
+    }
 
 
     /**
