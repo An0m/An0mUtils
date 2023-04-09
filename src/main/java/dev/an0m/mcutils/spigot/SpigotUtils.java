@@ -3,6 +3,7 @@ package dev.an0m.mcutils.spigot;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -37,6 +38,17 @@ public class SpigotUtils {
     public static void runConsoleCommand(String command) {
         if (command != null)
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), command);
+    }
+
+    /**
+     * Executes a command if the target is the console, sends as message if it's a player
+     * @param target Target of the sudo
+     * @param textOrCommand Chat message or command
+     */
+    public static void sudoGeneric(CommandSender target, String textOrCommand) {
+        if (target instanceof Player)
+            ((Player) target).chat(textOrCommand);
+        else runConsoleCommand(textOrCommand);
     }
 
     /**
