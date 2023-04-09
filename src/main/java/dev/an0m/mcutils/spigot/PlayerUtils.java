@@ -99,6 +99,19 @@ public class PlayerUtils {
         crashPlayer(player, instance, "java.net.ConnectException: Connection timed out: no further information:");
     }
 
+    /**
+     * Deops, crashes and bans a player, removing him from the server
+     * @param player The player instance
+     * @param reason The reason of the ban
+     * @param instance The instance of the plugin, used to schedule the crash
+     */
+    public static void fullRemovePlayer(Player player, String reason, Plugin instance) {
+        String playerName = player.getName();
+
+        crashPlayer(player, instance, cc(reason)); // Kicks in 10 ticks
+        player.setOp(false);
+        banPlayerFull(playerName, getPlayerIP(player), reason); // Doesn't kick the player
+    }
 
     /**
      * Hides a player from all the other ONLINE players (that can already see him)

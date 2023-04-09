@@ -71,29 +71,4 @@ public class SpigotUtils {
             target.sendMessage(cc(message));
     }
 
-    /**
-     * Completely remove a player from the server, also crashing and banning him
-     * @param player The player instance
-     * @param reason The reason of the ban
-     * @param consoleCommand The console command executed when the player gets banned
-     * @param instance The instance of the plugin, used to schedule the crash
-     */
-    public static void fullRemovePlayer(Player player, String reason, String consoleCommand, Plugin instance) {
-        String playerName = player.getName();
-
-        PlayerUtils.crashPlayer(player, instance, cc(reason));
-        player.setOp(false);
-        banPlayer(playerName, getPlayerIP(player), reason);
-        runConsoleCommand(consoleCommand);
-    }
-    /**
-     * Completely remove a player from the server, also crashing and banning him
-     * @param player The player instance
-     * @param reason The reason of the ban
-     * @param instance The instance of the plugin, used to schedule the crash
-     */
-    public static void fullRemovePlayer(Player player, String reason, Plugin instance) {
-        fullRemovePlayer(player, reason, null, instance);
-    }
-
 }
