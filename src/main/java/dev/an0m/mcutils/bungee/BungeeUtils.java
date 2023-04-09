@@ -13,6 +13,23 @@ import static dev.an0m.mcutils.TextUtils.cc;
 import static dev.an0m.mcutils.WebUtils.testSocketConnection;
 
 public class BungeeUtils {
+
+    /**
+     * Shows a warning message in the console
+     * @param msg The message to display
+     */
+    public static void warnBungee(String msg) {
+        ProxyServer.getInstance().getLogger().warning(msg);
+    }
+    /**
+     * Logs a message in console (Sends it as a message)
+     * @param msg The message to display
+     */
+    public static void logBungee(String msg) {
+        BungeeUtils.sendMessage(ProxyServer.getInstance().getConsole(), msg);
+    }
+
+
     /**
      * Executes a command as the console
      * @param command The command to execute. Can be null

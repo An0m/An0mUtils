@@ -13,6 +13,23 @@ import static dev.an0m.mcutils.spigot.PlayerUtils.banPlayer;
 import static dev.an0m.mcutils.spigot.PlayerUtils.getPlayerIP;
 
 public class SpigotUtils {
+
+    /**
+     * Shows a warning message in the console
+     * @param msg The message to display
+     */
+    public static void warnSpigot(String msg) {
+        Bukkit.getServer().getLogger().warning(msg);
+    }
+    /**
+     * Logs a message in console (Sends it as a message)
+     * @param msg The message to display
+     */
+    public static void logSpigot(String msg) {
+        SpigotUtils.sendMessage(Bukkit.getServer().getConsoleSender(), msg);
+    }
+
+
     /**
      * Executes a command as the console
      * @param command The command to execute. Can be null

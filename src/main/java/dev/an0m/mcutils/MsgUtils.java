@@ -1,50 +1,13 @@
 package dev.an0m.mcutils;
 
-import dev.an0m.mcutils.bungee.BungeeUtils;
-import dev.an0m.mcutils.spigot.SpigotUtils;
-import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import static dev.an0m.mcutils.TextUtils.cc;
 
 public class MsgUtils {
-
-    /**
-     * Shows a warning message in the console
-     * @param msg The message to display
-     */
-    public static void warnBungee(String msg) {
-        ProxyServer.getInstance().getLogger().warning(msg);
-    }
-    /**
-     * Shows a warning message in the console
-     * @param msg The message to display
-     */
-    public static void warnSpigot(String msg) {
-        Bukkit.getServer().getLogger().warning(msg);
-    }
-
-
-    /**
-     * Logs a message in console (Sends it as a message)
-     * @param msg The message to display
-     */
-    public static void logBungee(String msg) {
-        BungeeUtils.sendMessage(ProxyServer.getInstance().getConsole(), msg);
-    }
-    /**
-     * Logs a message in console (Sends it as a message)
-     * @param msg The message to display
-     */
-    public static void logSpigot(String msg) {
-        SpigotUtils.sendMessage(Bukkit.getServer().getConsoleSender(), msg);
-    }
-
 
     /**
      * Send a message with a basic button to a player
@@ -82,7 +45,7 @@ public class MsgUtils {
      * @param actualLink The actual fully qualified link to open when the link gets pressed
      * @param color The color of the hover text
      */
-    public static void sendLinkMessage(CommandSender target, String baseMessage, String msgLink, String actualLink, String color) {
+    public static void sendLinkMessage(net.md_5.bungee.api.CommandSender target, String baseMessage, String msgLink, String actualLink, String color) {
         target.sendMessage(new ComponentBuilder(cc(baseMessage))
                 .append(cc(msgLink))
                 .event(new ClickEvent(ClickEvent.Action.OPEN_URL, actualLink))
