@@ -134,6 +134,6 @@ public class WebUtils {
 
     /** Splits a socket address into IP and port */
     public static String[] splitSocketAddress(SocketAddress address) {
-        return rsplit(address.toString().replaceFirst("/", ""), ':');
+        return rsplit(address.toString().substring(1), ':');
     }
 }
