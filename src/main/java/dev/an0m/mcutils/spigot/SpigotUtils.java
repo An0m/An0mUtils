@@ -10,8 +10,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import static dev.an0m.mcutils.TextUtils.cc;
-import static dev.an0m.mcutils.spigot.PlayerUtils.banPlayer;
-import static dev.an0m.mcutils.spigot.PlayerUtils.getPlayerIP;
 
 public class SpigotUtils {
 
