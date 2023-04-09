@@ -77,7 +77,7 @@ public class SpigotUtils {
      * @param message The message to send. Nothing sent if empty
      */
     public static void sendMessage(org.bukkit.command.CommandSender target, String message) {
-        if (!message.isEmpty())
+        if (message != null && !message.isEmpty())
             target.sendMessage(cc(message));
     }
 

@@ -77,7 +77,7 @@ public class BungeeUtils {
      * @param message The message to send. Nothing sent if empty
      */
     public static void sendMessage(net.md_5.bungee.api.CommandSender target, String message) {
-        if (!message.isEmpty())
+        if (message != null && !message.isEmpty())
             target.sendMessage(cc(message));
     }
 
