@@ -6,7 +6,7 @@
 
     <groupId>dev.an0m</groupId>
     <artifactId>mcutils</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <description>A maven dependency that contains some of the functions that I use in most of my plugins</description>
 
     <properties>
