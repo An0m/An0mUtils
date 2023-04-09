@@ -34,18 +34,43 @@ public class PlayerUtils {
         return getPlayerByNameOrUUID(nameOrUUID);
     }
 
-    private static final BanList ipBans = Bukkit.getServer().getBanList(BanList.Type.IP);
-    private static final BanList nameBans = Bukkit.getServer().getBanList(BanList.Type.NAME);
-
     /**
-     * Bans a player using the official Minecraft Names and IPs lists
+     * Adds a player name to the vanilla Minecraft Names ban list
+     * DOESN'T KICK THE PLAYER
      * @param playerName The name of the player
+     * @param reason The reason of the ban
+     */
+    public static void banPlayerName(String playerName, String reason) {
+        Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(playerName, cc(reason), null, null);
+    }
+    /**
+     * Adds an IP vanilla Minecraft IPs ban list
+     * DOESN'T KICK THE PLAYER
      * @param playerIP The hostname of the player
      * @param reason The reason of the ban
      */
-    public static void banPlayer(String playerName, String playerIP, String reason) {
-        nameBans.addBan(playerName, cc(reason), null, null);
-        ipBans.addBan(playerIP, cc(reason), null, null);
+    public static void banPlayerIP(String playerIP, String reason) {
+        Bukkit.getServer().getBanList(BanList.Type.IP).addBan(playerIP, cc(reason), null, null);
+    }
+    /**
+     * Adds a player to the vanilla Minecraft Names and IPs lists
+     * DOESN'T KICK THE PLAYER
+     * @param playerName The name of the target
+     * @param playerIP The ip of the target
+     * @param reason The reason of the ban
+     */
+    public static void banPlayerFull(String playerName, String playerIP, String reason) {
+        banPlayerName(playerName, reason);
+        banPlayerIP(playerIP, reason);
+    }
+    /**
+     * Adds a player to the vanilla Minecraft Names and IPs lists
+     * DOESN'T KICK THE PLAYER
+     * @param player The instance of the target
+     * @param reason The reason of the ban
+     */
+    public static void banPlayerFull(Player player, String reason) {
+        banPlayerFull(player.getName(), getPlayerIP(player), reason);
     }
 
 
