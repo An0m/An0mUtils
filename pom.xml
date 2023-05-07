@@ -73,7 +73,7 @@
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <url>https://an0m.dev/api/admin.${uploadKey}/maven</url>
+            <url>https://an0m.dev/api/${uploadKey}/maven</url>
         </repository>
     </distributionManagement>
 
