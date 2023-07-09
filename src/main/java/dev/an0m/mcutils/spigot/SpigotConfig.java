@@ -31,22 +31,22 @@ public class SpigotConfig {
     /**
      * Loads (or reloads) the configuration file, and regenerates the config if not found
      */
-    public FileConfiguration loadConfig() {
+    public SpigotConfig loadConfig() {
         setupConfig();
         try {
             configuration.load(configFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
-
-        return configuration;
+        return this;
     }
 
     /**
      * Saves the current configuration to file
      */
-    public void saveConfig() {
+    public SpigotConfig saveConfig() {
         instance.saveResource(fileName, true);
+        return this;
     }
 
     /**

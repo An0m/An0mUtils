@@ -43,26 +43,26 @@ public class BungeeConfig {
     /**
      * Loads (or reloads) the configuration file, regenerating the config if has been deleted
      */
-    public Configuration loadConfig() {
+    public BungeeConfig loadConfig() {
         setupConfig();
         try {
             configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return configuration;
+        return this;
     }
 
     /**
      * Saves the current configuration to file
      */
-    public void saveConfig() {
+    public BungeeConfig saveConfig() {
         try {
             ConfigurationProvider.getProvider(YamlConfiguration.class).save(configuration, configFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return this;
     }
 
     /**
