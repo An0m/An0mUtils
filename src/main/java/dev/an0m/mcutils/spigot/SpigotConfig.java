@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class SpigotConfig {
-    public FileConfiguration configuration;
+    private final FileConfiguration configuration = new YamlConfiguration();
     private final Plugin instance;
     private final File configFile, folder;
     private final String fileName;
@@ -25,7 +25,6 @@ public class SpigotConfig {
         this.folder = plugin.getDataFolder();
 
         this.configFile = new File(folder, fileName);
-        this.configuration = new YamlConfiguration();
     }
 
     /**
@@ -63,5 +62,12 @@ public class SpigotConfig {
             // Save the resource
             instance.saveResource(fileName, true); // If it already doesn't exist, we don't care about checking again
         }
+    }
+
+    /**
+     * @return The yaml configuration
+     */
+    public FileConfiguration getConfig() {
+        return configuration;
     }
 }

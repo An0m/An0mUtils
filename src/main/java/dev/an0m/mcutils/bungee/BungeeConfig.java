@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class BungeeConfig {
-    public Configuration configuration;
+    private Configuration configuration;
     private final Plugin instance;
     private final File configFile, folder;
     private final String fileName;
@@ -83,5 +83,12 @@ public class BungeeConfig {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * @return The yaml configuration
+     */
+    public Configuration getConfig() {
+        return configuration;
     }
 }
