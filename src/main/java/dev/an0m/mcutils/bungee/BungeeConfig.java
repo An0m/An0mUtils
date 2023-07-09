@@ -68,19 +68,18 @@ public class BungeeConfig {
      * Not really useful, called as first line of the loadConfig method
      */
     public void setupConfig() {
+        if (!configFile.exists()) {
 
-        if (!folder.exists())
-            try {
+            // Check if the folder exists
+            if (!folder.exists())
                 folder.mkdirs();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
-        if (!configFile.exists())
+            // Save the resource
             try {
                 Files.copy(instance.getResourceAsStream(fileName), configFile.toPath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
     }
 }
