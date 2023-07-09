@@ -41,15 +41,17 @@ public class BungeeConfig {
     }
 
     /**
-     * Loads (or reloads) the configuration file, and regenerates the config if not found
+     * Loads (or reloads) the configuration file, regenerating the config if has been deleted
      */
-    public void loadConfig() {
+    public Configuration loadConfig() {
         setupConfig();
         try {
             configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return configuration;
     }
 
     /**
