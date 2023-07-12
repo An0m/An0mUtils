@@ -44,7 +44,11 @@ public class SpigotConfig {
      * Saves the current configuration to file
      */
     public SpigotConfig saveConfig() {
-        instance.saveResource(fileName, true);
+        try {
+            configuration.save(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
