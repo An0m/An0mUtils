@@ -174,6 +174,6 @@ public class PlayerUtils {
 
     /** Returns a player's IP address (IPv4 or IPv6) */
     public static String getPlayerIP(Player player) {
-        return (String.valueOf(player.getAddress().getAddress())).substring(1); // Removes the first slash (/)
+        return player.getAddress().getAddress().toString().substring(1); // Removes the first slash (/)
     }
 }
