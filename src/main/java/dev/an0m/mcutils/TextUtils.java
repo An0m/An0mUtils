@@ -141,4 +141,19 @@ public class TextUtils {
         return new String[]{input.substring(0, last -1), input.substring(last +1)};
     }
 
+    /** Check if a list of strings contains a given string, ignoring the casing */
+    public static boolean containsIgnoreCase(Collection<String> list, String str) {
+        for (String s : list) {
+            if (str.equalsIgnoreCase(s)) return true;
+        }
+        return false;
+    }
+    /** Check if a list of strings contains a given string, ignoring the casing */
+    public static boolean containsIgnoreCase(String[] list, String str) {
+        for (String s : list) {
+            if (str.equalsIgnoreCase(s)) return true;
+        }
+        return false;
+    }
+
 }

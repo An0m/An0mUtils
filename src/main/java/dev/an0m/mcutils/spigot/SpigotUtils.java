@@ -62,11 +62,11 @@ public class SpigotUtils {
 
     /**
      * A quick function for registering multiple listeners
-     * @param pluginManager The instance of the plugin manager
      * @param instance The instance of the plugin
      * @param listeners The instances of the listeners to register
      */
-    public static void registerListeners(PluginManager pluginManager, Plugin instance, Listener... listeners) {
+    public static void registerListeners(Plugin instance, Listener... listeners) {
+        PluginManager pluginManager = instance.getServer().getPluginManager();
         for (Listener listener : listeners)
             pluginManager.registerEvents(listener, instance);
     }

@@ -50,22 +50,22 @@ public class BungeeUtils {
 
     /**
      * A quick function for registering multiple listeners
-     * @param pluginManager The instance of the plugin manager
      * @param instance The instance of the plugin
      * @param commands The instances of the listeners to register
      */
-    public static void registerCommands(PluginManager pluginManager, Plugin instance, Command... commands) {
+    public static void registerCommands(Plugin instance, Command... commands) {
+        PluginManager pluginManager = instance.getProxy().getPluginManager();
         for (Command command : commands)
             pluginManager.registerCommand(instance, command);
     }
 
     /**
      * A quick function for registering multiple listeners
-     * @param pluginManager The instance of the plugin manager
      * @param instance The instance of the plugin
      * @param listeners The instances of the listeners to register
      */
-    public static void registerListeners(PluginManager pluginManager, Plugin instance, Listener... listeners) {
+    public static void registerListeners(Plugin instance, Listener... listeners) {
+        PluginManager pluginManager = instance.getProxy().getPluginManager();
         for (Listener listener : listeners)
             pluginManager.registerListener(instance, listener);
     }

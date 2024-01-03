@@ -1,5 +1,7 @@
 package dev.an0m.mcutils.spigot;
 
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -29,9 +31,30 @@ public class PlayerUtils {
      * @param nameOrUUID A string that can be either the name or the uuid
      * @return The instance of the player
      */
-    @Deprecated
     public static Player getPlayer(String nameOrUUID) {
         return getPlayerByNameOrUUID(nameOrUUID);
+    }
+
+    /**
+     * Gets the instance of a player, starting from the name or the uuid
+     * @param nameOrUUID A string that can be either the name or the uuid
+     * @return The instance of the player
+     */
+    public static ProxiedPlayer getProxiedPlayerByNameOrUUID(String nameOrUUID) {
+        ProxyServer server = ProxyServer.getInstance();
+        try {
+            return server.getPlayer(UUID.fromString(nameOrUUID));
+        } catch (IllegalArgumentException e) {
+            return server.getPlayer(nameOrUUID);
+        }
+    }
+    /**
+     * Gets the instance of a player, starting from the name or the uuid
+     * @param nameOrUUID A string that can be either the name or the uuid
+     * @return The instance of the player
+     */
+    public static ProxiedPlayer getProxiedPlayer(String nameOrUUID) {
+        return getProxiedPlayerByNameOrUUID(nameOrUUID);
     }
 
     /**
