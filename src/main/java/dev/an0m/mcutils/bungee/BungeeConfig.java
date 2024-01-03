@@ -13,31 +13,26 @@ public class BungeeConfig {
     private Configuration configuration;
     private final Plugin instance;
     private final File configFile, folder;
-    private final String fileName;
 
 
     /**
      * A basic bungee config util
      * @param plugin The instance of the plugin
-     * @param folderName The name of the plugin folder
      * @param fileName The name filename of the resource with extension (ex: file.yml)
      */
-    public BungeeConfig(Plugin plugin, String folderName, String fileName) {
+    public BungeeConfig(Plugin plugin, String fileName) {
         this.instance = plugin;
-        this.fileName = fileName;
 
-        String dataFolder = "plugins/" + folderName + "/";
-        folder = new File(dataFolder);
-        configFile = new File(dataFolder, fileName);
+        folder = plugin.getProxy().getPluginsFolder();
+        configFile = new File(folder, fileName);
     }
 
     /**
      * A basic bungee config util
-     * @param instance The instance of the plugin
-     * @param folderName The name of the plugin folder
+     * @param plugin The instance of the plugin
      */
-    public BungeeConfig(Plugin instance, String folderName) {
-        this(instance, folderName, "config.yml");
+    public BungeeConfig(Plugin plugin) {
+        this(plugin, "config.yml");
     }
 
     /**
@@ -78,7 +73,7 @@ public class BungeeConfig {
 
             // Save the resource
             try {
-                Files.copy(instance.getResourceAsStream(fileName), configFile.toPath());
+                Files.copy(instance.getResourceAsStream(configFile.getName()), configFile.toPath());
             } catch (IOException e) {
                 e.printStackTrace();
             }

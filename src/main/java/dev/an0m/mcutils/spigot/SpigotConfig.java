@@ -27,6 +27,10 @@ public class SpigotConfig {
         this.configFile = new File(folder, fileName);
     }
 
+    public SpigotConfig(Plugin plugin) {
+        this(plugin, "config.yml");
+    }
+
     /**
      * Loads (or reloads) the configuration file, and regenerates the config if not found
      */
