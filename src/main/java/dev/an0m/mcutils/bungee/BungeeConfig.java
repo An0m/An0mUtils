@@ -23,7 +23,7 @@ public class BungeeConfig {
     public BungeeConfig(Plugin plugin, String fileName) {
         this.instance = plugin;
 
-        folder = plugin.getProxy().getPluginsFolder();
+        folder = plugin.getDataFolder();
         configFile = new File(folder, fileName);
     }
 
