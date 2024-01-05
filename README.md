@@ -1,6 +1,6 @@
 # An0mUtils
 A maven dependency that contains some of the (simple) functions that i use in most of my plugins.<br>
-You can use this dependency referencing to https://an0m.dev/maven
+You can use this dependency by referencing https://an0m.dev/maven
 
 Example:
 ```xml
